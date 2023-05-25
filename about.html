@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Torjus Nilsen"/>
+      <meta name="description" content="here kan you read all abput the blog car'Oclock" />
+     <meta name="keywords" content="html, css, javascript. about us">
+    <link rel="stylesheet" href="/css/about.css">
+     <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css" />
+    <title>Home</title>
+  </head>
+  <body class="animate__animated animate__fadeIn">
+     
+    <header>
+      
+        <div class="nav container">
+          
+            <i class="bx bx-menu" id="menu-icon"></i>
+
+            <a href="#" class="logo">Car<span>'Oclock</span></a>
+            <ul class="navbar">
+                <li><a href="index.html" class="active">Home</a></li>
+                 <li><a href="blog.html">blog</a></li>
+                 <li><a href="contact.html">contact</a></li>
+            </ul>
+            <i class="bx bx-search" id="search-icon" ></i>
+            <div class="search-box container">
+                <input type="search" name="" id="" placeholder="Search here...">
+            </div>
+        </div>
+    </header>
+
+      <main class="l-main">
+      
+       <section class="main" id="main">
+        <div class="main-text container">
+            <h2 class="main-title">Car'Oclock</h2>
+            <span class="main-subtitle">Driven by innovation, powered by you - a car blog</span>
+        </div>
+    </section>
+         <section class="main-container"> 
+  <div class="item one"> 
+       <h1>About us car O’clock</h1> 
+       <p>Cold Car O'clock is a website dedicated to providing in-depth and informative reviews of various cars, helping car enthusiasts and potential buyers make informed decisions about their next purchase. With a team of experienced writers who are passionate about the automotive industry, Cold Car O'Blog provides unbiased reviews of cars from all major manufacturers, covering everything from performance and features to value for money and overall design.
+       In addition to car reviews, Cold Car O'clock also covers automotive news, trends, and developments, keeping readers up-to-date with the latest developments in the industry. Whether you're interested in electric cars, luxury vehicles, or budget-friendly options, you'll find something of interest on the blog.
+       One of the standout features of Cold Car O'clock is the attention to detail in each review. The writers go beyond the typical specs and features and delve into the driving experience, build quality, and overall feel of each car. This level of detail is invaluable for anyone considering a new car purchase, as it provides a more complete picture of what to expect from a particular model.
+      Overall, Cold Car O'clock is an excellent resource for anyone interested in cars, whether you're a seasoned enthusiast or just starting to explore the world of automotive technology. With a wealth of informative reviews and up-to-date news, the blog is a must-read for anyone looking to make an informed decision about their next car purchase.</p> 
+   
+</div> 
+</section>
+
+    </main>
+
+      <footer class="l-footer">
+
+    <section class="footer">
+        <div class="footer-container container">
+            <div class="footer-box">
+                <img class="footer-img" src="/images/images.png" alt="logo of car'oclock">
+                <div class="social">
+                    <a href="#"><i class="bx bxl-facebook" ></i></a>
+                    <a href="#"><i class="bx bxl-twitter"></i></a>
+                    <a href="#"><i class="bx bxl-instagram" ></i></a>
+                </div>
+            </div>
+            
+             <div class="footer-box">
+                <h3>contact info</h3>
+                <p>car’oblog@gmail.com</p>
+                <p>+4798082018</p>
+             </div>
+               <small class="createt-by">Created with ❤️ by _Torjus Jahren Nilsen_</small>
+        </div>
+    </section>
+    </footer>
+  
+    <script>
+        
+        let search = document.querySelector('.search-box');
+
+document.querySelector('#search-icon').onclick = () => {
+   search.classList.toggle('active');
+    menu.classList.remove('active');
+}
+
+let menu = document.querySelector('.navbar');
+
+document.querySelector('#menu-icon').onclick = () => {
+    menu.classList.toggle('active');
+    search.classList.remove('active');
+}
+
+window.onscroll = () => {
+    menu.classList.remove('active');
+    search.classList.remove('active');
+}
+
+let header = document.querySelector('header');
+
+window.addEventListener('scroll' , () => {
+    header.classList.toggle('shadow', window.scrollY > 0);
+});
+    </script>
+</body>
+</html>

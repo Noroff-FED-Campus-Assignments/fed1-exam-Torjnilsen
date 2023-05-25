@@ -1,49 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="_REPLACE_WITH_DESCRIPTION_" />
-    <meta
-      name="keywords"
-      content="HTML, CSS, JavaScript, _REPLACE_WITH_KEYWORD_"
-    />
-    <meta name="author" content="_YOUR_NAME_" />
-    <link rel="stylesheet" href="/style.css" />
-    <!-- TODO: Import Javascript -->
-    <title>_REPLACE_SITE_NAME</title>
-  </head>
-  <body class="animate__animated animate__fadeIn">
-    <header class="l-header">
-      <h1>Home</h1>
+<html>
+<head>
+   <meta charset="UTF-8">
+     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="author" content="Torjus Nilsen"/>
+      <meta name="description" content="here is the home page, you have a slick carousel with blog posts and a baout section"/>
+     <meta name="keywords" content="html, css, javascript. index/home page">
+  <title>home page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+  <link rel="stylesheet" href="/css/new.css">
+      <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+
+ <body class="animate__animated animate__fadeIn">
+     
+    <header>
+      
+        <div class="nav container">
+          
+            <i class="bx bx-menu" id="menu-icon"></i>
+
+            <a href="#" class="logo">Car<span>'Oclock</span></a>
+
+            <ul class="navbar">
+                <li><a href="about.html" class="active">About us</a></li>
+                 <li><a href="blog.html">blog</a></li>
+                 <li><a href="contact.html">contact</a></li>
+                 
+            </ul>
+          
+            <i class="bx bx-search" id="search-icon" ></i>
+           
+            <div class="search-box container">
+                <input type="search" name="" id="" placeholder="Search here...">
+            </div>
+        </div>
+
+  
     </header>
 
+
     <main class="l-main">
-      <section role="search"></section>
+      
+       <section class="main" id="main">
+        <div class="main-text container">
+            <h2 class="main-title">Car'Oclock</h2>
+            <span class="main-subtitle">Driven by innovation, powered by you - a car blog</span>
+        </div>
+    </section>
 
-      <article role="doc-introduction">
-        <h2>List</h2>
+<h2 class="reacent-post">recent posts</h2>
 
-        <img
-          src="/placeholder.jpg"
-          loading="lazy"
-          alt="…"
-          class="u-img hero-image"
-          width="1024"
-          height="1024"
-        />
-
-        <p>_REPLACE_INTRODUCTION_</p>
-      </article>
-
-      <section role="list">
-        <div id="js-list-container">_LOADING_INDICATOR_GOES_HERE_</div>
-      </section>
     </main>
+ <div class="item one"> 
+  <div id="posts-carousel"></div>
+  <div class="slider-nav">
+    <div class="button-container">
+    <button id="prev-btn">Prev</button>
+    <button id="next-btn">Next</button>
+    </div>
+  </div>
+  </div>
 
-    <footer class="l-footer">
-      <small>Created with ❤️ by _REPLACE_</small>
+
+  <section class="home" id="home">
+        <div class="home-text">
+            <h1>about <br>car'<span>Oclock</span></h1>
+            <p>click here and read<br>  more about the blog</p>
+           
+            <a href="about.html" class="btn">Read more</a>
+        </div>
+
+    </section>
+
+<footer>
+     <section class="footer">
+        <div class="footer-container container">
+            <div class="footer-box">
+                <img class="footer-img" src="/images/images.png" alt="logo of car'oclock">
+                <div class="social">
+                    <a href="#"><i class="bx bxl-facebook" ></i></a>
+                    <a href="#"><i class="bx bxl-twitter"></i></a>
+                    <a href="#"><i class="bx bxl-instagram" ></i></a>
+                </div>
+            </div>
+            
+             <div class="footer-box">
+                <h3>contact info</h3>
+                <p>car’oblog@gmail.com</p>
+                <p>+4798082018</p>
+             </div>
+               <small class="createt-by">Created with ❤️ by _Torjus Jahren Nilsen_</small>
+        </div>
+    </section>
     </footer>
-  </body>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <script>
+
+    let search = document.querySelector('.search-box');
+
+document.querySelector('#search-icon').onclick = () => {
+    search.classList.toggle('active');
+    menu.classList.remove('active');
+}
+
+let menu = document.querySelector('.navbar');
+
+document.querySelector('#menu-icon').onclick = () => {
+    menu.classList.toggle('active');
+    search.classList.remove('active');
+}
+
+window.onscroll = () => {
+    menu.classList.remove('active');
+    search.classList.remove('active');
+}
+
+
+let header = document.querySelector('header');
+
+window.addEventListener('scroll' , () => {
+    header.classList.toggle('shadow', window.scrollY > 0);
+});
+
+
+    async function getPosts() {
+      try {
+        const response = await fetch('http://examcaroclock.flywheelsites.com/?rest_route=/wp/v2/posts&per_page=12');
+        const posts = await response.json();
+        return posts;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    async function getAuthorName(postId) {
+      switch (postId) {
+        case 1:
+          return 'torjus Nilsen';
+      }
+    }
+
+    function renderCarousel(posts) {
+      const carouselContainer = $('#posts-carousel');
+      posts.forEach(post => {
+        const author = getAuthorName(post.id);
+        const postCard = `
+        <a href="details.html?id=${post.id}">
+          <div class="post-card">
+            <h2 class="post-title">${post.title.rendered}</h2>
+            <p class="post-meta">By ${author} on ${new Date(post.date).toLocaleDateString()}</p>
+            <div class="post-content">${post.content.rendered}</div>
+          </div>
+        `;
+        carouselContainer.append(postCard);
+      });
+    }
+
+
+
+    function showCarousel() {
+      getPosts()
+        .then(posts => {
+          renderCarousel(posts);
+          const carousel = $('#posts-carousel').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            autoplay: true,
+            autoplaySpeed: 2000,
+          });
+
+          $('#prev-btn').on('click', function() {
+            carousel.slick('slickPrev');
+          });
+
+          $('#next-btn').on('click', function() {
+            carousel.slick('slickNext');
+          });
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+
+    $(document).ready(() => {
+      showCarousel();
+    });
+
+    
+  </script>
+</body>
 </html>
+  
+
+
+
