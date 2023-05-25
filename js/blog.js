@@ -30,7 +30,7 @@ let blogPosts = [];
 
 async function getPosts() {
   try {
-    const response = await fetch('http://examcaroclock.flywheelsites.com/?rest_route=/wp/v2/posts&per_page=12');
+    const response = await fetch('https://examcaroclock.flywheelsites.com/?rest_route=/wp/v2/posts&per_page=12');
     const posts = await response.json();
     return posts;
   } catch (error) {

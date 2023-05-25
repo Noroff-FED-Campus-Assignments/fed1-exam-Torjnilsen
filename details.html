@@ -91,7 +91,7 @@ const postId = urlParams.get('id');
 
 const fetchPostData = async () => {
   try {
-    const res = await fetch(`http://examcaroclock.flywheelsites.com/?rest_route=/wp/v2/posts/${postId}`);
+    const res = await fetch(`https://examcaroclock.flywheelsites.com/?rest_route=/wp/v2/posts/${postId}`);
     const postData = await res.json();
     displayPostData(postData);
   } catch (error) {
