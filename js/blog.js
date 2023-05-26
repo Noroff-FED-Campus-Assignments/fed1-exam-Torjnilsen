@@ -101,3 +101,4 @@ function displayFilteredPosts(filteredPosts) {
 
 displayPosts();
  
+ 
