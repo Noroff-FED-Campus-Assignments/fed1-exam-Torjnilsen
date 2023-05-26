@@ -1,8 +1,5 @@
 import $ from "jquery";
 import 'slick-carousel';
-
-
-
 console.log("hereeee",$)
 
 let search = document.querySelector('.search-box');
