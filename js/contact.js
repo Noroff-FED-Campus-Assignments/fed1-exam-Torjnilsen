@@ -1,30 +1,75 @@
-/*
-============================================
-Constants
-@example: https://github.com/S3ak/fed-javascript1-api-calls/blob/main/examples/advanced-form.html#L50
-============================================
-*/
+let search = document.querySelector('.search-box');
 
-// TODO: Get DOM elements from the DOM
+document.querySelector('#search-icon').onclick = () => {
+    search.classList.toggle('active');
+    menu.classList.remove('active');
+}
 
-// TODO: Create event listeners for the form
+let menu = document.querySelector('.navbar');
 
-/*
-============================================
-API calls
-@example: https://github.com/S3ak/fed-javascript1-api-calls/blob/main/examples/advanced-form.html#L157
-============================================
-*/
+document.querySelector('#menu-icon').onclick = () => {
+    menu.classList.toggle('active');
+    search.classList.remove('active');
+}
 
-// TODO: Set up a function to fetch data from the API
+window.onscroll = () => {
+    menu.classList.remove('active');
+    search.classList.remove('active');
+}
 
-/*
-============================================
-Helper functions
-@example: https://github.com/S3ak/fed-javascript1-api-calls/blob/main/examples/advanced-form.html#L118
-============================================
-*/
 
-// TODO: Create a function to validate an input field
+let header = document.querySelector('header');
 
-// TODO: Create a function to create a DOM element
+window.addEventListener('scroll' , () => {
+    header.classList.toggle('shadow', window.scrollY > 0);
+});
+
+
+const form = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const nameInput = document.getElementById('name');
+      const subjectInput = document.getElementById('subject');
+      const emailInput = document.getElementById('email');
+      const messageInput = document.getElementById('message');
+
+      let isValid = true;
+
+      if (nameInput.value.trim().length < 2) {
+        alert('Please enter your name.');
+        nameInput.focus();
+        isValid = false;
+      }
+
+      if (subjectInput.value.trim().length < 15) {
+        alert('Please enter a subject with at least 15 characters.');
+        subjectInput.focus();
+        isValid = false;
+      }
+
+      if (!isValidEmail(emailInput.value)) {
+        alert('Please enter a valid email address.');
+        emailInput.focus();
+        isValid = false;
+      }
+
+      if (messageInput.value.trim().length < 10) {
+        alert('Please enter an address with at least 10 characters.');
+        messageInput.focus();
+        isValid = false;
+      }
+
+      if (isValid) {
+        successMessage.style.display = 'block';
+        form.reset();
+      }
+    });
+
+    function isValidEmail(email) {
+      
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email);
+    }

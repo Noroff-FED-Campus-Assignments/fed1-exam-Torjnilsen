@@ -1,46 +1,30 @@
-/*
-============================================
-Constants
-@example: https://github.com/S3ak/fed-javascript1-api-calls/blob/main/examples/games.html#L66
-============================================
-*/
 
-// TODO: Get DOM elements from the DOM
+let search = document.querySelector('.search-box');
 
-// TODO: Get the query parameter from the URL
+document.querySelector('#search-icon').onclick = () => {
+   search.classList.toggle('active');
+    menu.classList.remove('active');
+}
 
-// TODO: Get the id from the query parameter
+let menu = document.querySelector('.navbar');
 
-// TODO: Create a new URL with the id @example: https://www.youtube.com/shorts/ps7EkRaRMzs
+document.querySelector('#menu-icon').onclick = () => {
+    menu.classList.toggle('active');
+    search.classList.remove('active');
+}
 
-/*
-============================================
-DOM manipulation
-@example: https://github.com/S3ak/fed-javascript1-api-calls/blob/main/examples/games.html#L89
-============================================
-*/
+window.onscroll = () => {
+    menu.classList.remove('active');
+    search.classList.remove('active');
+}
 
-// TODO: Fetch and Render the list to the DOM
+let header = document.querySelector('header');
 
-// TODO: Create event listeners for the filters and the search
+window.addEventListener('scroll' , () => {
+    header.classList.toggle('shadow', window.scrollY > 0);
+});
 
-/*
-============================================
-Data fectching
-@example: https://github.com/S3ak/fed-javascript1-api-calls/blob/main/examples/games.html#L104
-============================================
-*/
 
-// TODO: Fetch an a single of objects from the API
 
-/*
-============================================
-Helper functions
-============================================
-*/
 
-/**
- * TODO: Create a function to create a DOM element.
- * @example: https://github.com/S3ak/fed-javascript1-api-calls/blob/main/src/js/detail.js#L36
- * @param {item} item The object with properties from the fetched JSON data.
- */
+

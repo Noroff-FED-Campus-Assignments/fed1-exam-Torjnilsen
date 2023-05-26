@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Torjus Nilsen" />
+  <meta name="description" content="here kan you read each blog posts in more detail" />
+  <meta name="keywords" content="html, css, javascript. blog details">
+  <title>blog posts details</title>
+  <link rel="stylesheet" href="/css/detailes.css">
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+<header>
+
+  <div class="nav container">
+
+    <i class="bx bx-menu" id="menu-icon"></i>
+
+    <a href="#" class="logo">Car<span>'Oclock</span></a>
+
+    <ul class="navbar">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="blog.html">blog</a></li>
+      <li><a href="about.html">about us</a></li>
+      <li><a href="contact.html">contact</a></li>
+
+    </ul>
+
+    <i class="bx bx-search" id="search-icon"></i>
+
+    <div class="search-box container">
+      <input type="search" name="" id="" placeholder="Search here...">
+    </div>
+  </div>
+</header>
+
+<main class="l-main">
+
+  <section class="main" id="main">
+    <div class="main-text container">
+      <h2 class="main-title">Car'Oclock</h2>
+      <span class="main-subtitle">Driven by innovation, powered by you - a car blog</span>
+    </div>
+  </section>
+
+  <section class="main-container">
+    <div class="item one">
+      <main>
+        <h1>post details</h1>
+        <div id="post-container"></div>
+      </main>
+    </div>
+  </section>
+
+</main>
+<footer class="l-footer">
+
+  <section class="footer">
+    <div class="footer-container container">
+      <div class="footer-box">
+        <img class="footer-img" src="/images/images.png" alt="logo of car'oclock">
+        <div class="social">
+          <a href="#"><i class="bx bxl-facebook"></i></a>
+          <a href="#"><i class="bx bxl-twitter"></i></a>
+          <a href="#"><i class="bx bxl-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-box">
+        <h3>contact info</h3>
+        <p>car’oblog@gmail.com</p>
+        <p>+4798082018</p>
+      </div>
+      <small class="createt-by">Created with ❤️ by _Torjus Jahren Nilsen_</small>
+    </div>
+  </section>
+</footer>
+
+<script type="module" src="/js/details.js"></script>
+
+<script type="module">
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const postId = urlParams.get("id");
+
+  const fetchPostData = async () => {
+    try {
+      const res = await fetch(`https://examcaroclock.flywheelsites.com/?rest_route=/wp/v2/posts/${postId}`);
+      const postData = await res.json();
+      displayPostData(postData);
+    } catch (error) {
+      console.log(error);
+
+    }
+  };
+
+  const displayPostData = (postData) => {
+    const postTitle = postData.title.rendered;
+    const postContent = postData.content.rendered;
+    const postAuthor = postData.author.name;
+
+    const postTitleEl = document.createElement("h2");
+    postTitleEl.textContent = postTitle;
+
+    const postContentEl = document.createElement("div");
+    postContentEl.innerHTML = postContent;
+
+    const postAuthorEl = document.createElement("p");
+    postAuthorEl.textContent = `Author: ${postAuthor}`;
+
+    const containerEl = document.querySelector("#post-container");
+    containerEl.appendChild(postTitleEl);
+    containerEl.appendChild(postContentEl);
+    containerEl.appendChild(postAuthorEl);
+  };
+
+  fetchPostData();
+
+
+</script>
+</body>
+</html>
